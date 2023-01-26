@@ -16,20 +16,21 @@ public class Aim : MonoBehaviour
                 Decor dec = gohit.GetComponent<Decor>();
                 GameObject go = Factory.Instance.factoryGO(hit.point, dec.rot, dec.offset, PlayerID, dec.index);
                 go.transform.parent = gohit.transform;
-                if (GameManager.Instance.playersObjects[PlayerID] != null)
+                if (GameManager.Instance.playersObjects[PlayerID] == null)
                 {
                     GameManager.Instance.playersObjects[PlayerID] = go;
                 }
                 else
                 {
+                    //GameObject goToDestroy = GameManager.Instance.playersObjects[PlayerID];
                     Destroy(GameManager.Instance.playersObjects[PlayerID]);
                     GameManager.Instance.playersObjects[PlayerID] = go;
                 }
             }else if (gohit.layer == 7)
             {
-                if (GameManager.Instance.gameState == 1)
+                if (GameManager.Instance.gameState == 1 && gohit.GetComponent<Treasure>().playerID!=PlayerID)
                 {
-                    
+                    GameManager.Instance.winner(PlayerID);
                 }
             }
         }
