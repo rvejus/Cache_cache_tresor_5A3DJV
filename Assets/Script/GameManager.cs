@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     float timeWait;
     private int iter=0;
     private Vector3 chngScale = new Vector3(-0.1f, 0f, -0.1f);
+  
+
     private void Awake()
     {
         {
