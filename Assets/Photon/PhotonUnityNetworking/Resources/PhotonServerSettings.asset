@@ -39,6 +39,11 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - Initialize
+  - CreatePlayerObject
+  - CallShoot
+  - ImInGame
+  - rpctimerBegin
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

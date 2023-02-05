@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="City_Card" size="0.700000 1.143333" />
     <ImageTarget name="viforia_drone" size="0.760000 1.311111" />
   </Tracking>
 </QCARConfig>

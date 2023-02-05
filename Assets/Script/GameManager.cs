@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
+    public int playersInGame; 
     public static GameManager Instance;
     public List<GameObject> playersObjects = new List<GameObject>();
     public List<GameObject> cylinders = new List<GameObject>(2);
@@ -14,8 +17,16 @@ public class GameManager : MonoBehaviour
     float timeWait;
     private int iter=0;
     private Vector3 chngScale = new Vector3(-0.1f, 0f, -0.1f);
-  
-
+    public CityPlayer[] players;
+    public string playerPrefab;
+    
+    private void Start(){
+        
+        players = new CityPlayer[PhotonNetwork.PlayerList.Length];
+        photonView.RPC("ImInGame", RpcTarget.AllBuffered);
+        //  DefaultObserverEventHandler.isTracking = false;
+    }
+    
     private void Awake()
     {
         {
@@ -38,6 +49,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void timerBegin()
+    {
+        photonView.RPC("rpctimerBegin", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void rpctimerBegin()
     {
         StartCoroutine(timer());
     }
@@ -97,5 +114,21 @@ public class GameManager : MonoBehaviour
                 cylinders[1] = go;
             }
         }
+    }
+    
+    [PunRPC]
+    void ImInGame(){
+        playersInGame++;
+        Debug.Log("Player added: ");
+        if(playersInGame == PhotonNetwork.PlayerList.Length){
+            SpawnPlayer();
+        }
+    }
+    
+    void SpawnPlayer(){
+        GameObject playerObject = PhotonNetwork.Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        //intialize the player
+        CityPlayer playerScript = playerObject.GetComponent<CityPlayer>();
+        playerScript.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 }
