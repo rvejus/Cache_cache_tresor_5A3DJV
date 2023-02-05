@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    private int playersInGame; 
+    public int playersInGame; 
     public static GameManager Instance;
     public List<GameObject> playersObjects = new List<GameObject>();
     public List<GameObject> cylinders = new List<GameObject>(2);
@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     public void timerBegin()
+    {
+        photonView.RPC("rpctimerBegin", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void rpctimerBegin()
     {
         StartCoroutine(timer());
     }
