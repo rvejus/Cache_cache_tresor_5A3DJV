@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   isReady: 0
-  AimButton: {fileID: 0}
 --- !u!114 &7937395682336669331
 MonoBehaviour:
   m_ObjectHideFlags: 0

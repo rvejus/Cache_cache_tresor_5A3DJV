@@ -24,6 +24,7 @@ public class Aim : MonoBehaviour
     public void Shoot(int PlayerID, RaycastHit hit)
     {
         GameObject gohit = hit.transform.gameObject;
+        Debug.Log(PlayerID);
         if (gohit.layer == 6)
         {
             if (!GameManager.Instance.gamePlays)

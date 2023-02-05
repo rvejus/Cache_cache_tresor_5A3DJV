@@ -32,26 +32,26 @@ public class CityPlayer : MonoBehaviourPunCallbacks
     public void callAim()
     {
         Transform viseur= Aim.Instance.transform;
-        float tx = viseur.transform.position.x;
-        float ty = viseur.transform.position.y;
-        float tz = viseur.transform.position.z;
-        float rx = viseur.transform.position.x;
-        float ry = viseur.transform.position.y;
-        float rz = viseur.transform.position.z;
-        photonView.RPC("CallShoot", RpcTarget.All, playerID,tx,ty,tz,rx,ry,rz);
+        Vector3 pos = viseur.position;
+        Quaternion rot = viseur.rotation;
+        Vector3 fwd = viseur.TransformDirection(Vector3.forward);
+        float fx = fwd.x;
+        float fy = fwd.y;
+        float fz = fwd.z;
+        float tx = pos.x;
+        float ty = pos.y;
+        float tz = pos.z;
+        photonView.RPC("CallShoot", RpcTarget.All, playerID,fx,fy,fz,tx,ty,tz);
         
     }
     
     [PunRPC]
-    public void CallShoot(int IDPlayer, float tx, float ty, float tz, float rx, float ry, float rz)
+    public void CallShoot(int IDPlayer, float fx, float fy, float fz, float tx, float ty, float tz)
     {
-        GameObject go = new GameObject();
-        go.transform.position = new Vector3(tx, ty, tz);
-        go.transform.rotation = Quaternion.Euler(rx, ry, rz);
-        Transform viseur = go.transform;
+        Vector3 pos = new Vector3(tx, ty, tz);
         RaycastHit hit;
-        Vector3 fwd = viseur.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(viseur.position, fwd, out hit, 10))
+        Vector3 fwd = new Vector3(fx, fy, fz);
+        if (Physics.Raycast(pos, fwd, out hit, 10))
         {
             Aim.Instance.Shoot(playerID, hit);
         }
