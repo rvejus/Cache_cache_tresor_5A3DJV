@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> cylinders = new List<GameObject>(2);
     [SerializeField]
     private List<GameObject> cylindersPrefab = new List<GameObject>();
-    public int gameState;
     public bool gamePlays = false;
     [SerializeField]
     float timeWait;
