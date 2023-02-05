@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     float timeWait;
     private int iter=0;
     private Vector3 chngScale = new Vector3(-0.1f, 0f, -0.1f);
-    public List<CityPlayer> players = new List<CityPlayer>(2);
+    public CityPlayer[] players;
     public string playerPrefab;
     
     private void Start(){
         
-        players = new List<CityPlayer>(PhotonNetwork.PlayerList.Length);
+        players = new CityPlayer[PhotonNetwork.PlayerList.Length];
         photonView.RPC("ImInGame", RpcTarget.AllBuffered);
         //  DefaultObserverEventHandler.isTracking = false;
     }

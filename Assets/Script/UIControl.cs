@@ -18,7 +18,7 @@ public class UIControl : MonoBehaviour {
    
     private void Update()
     {
-        if (!PhotonNetwork.IsMasterClient) _debugTimerBtn.enabled = false;
+        if (!PhotonNetwork.IsMasterClient) _debugTimerBtn.gameObject.SetActive(false);
     }
    
     public void OnAimButtonPressed() {

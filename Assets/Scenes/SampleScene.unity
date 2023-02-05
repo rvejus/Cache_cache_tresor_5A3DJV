@@ -987,7 +987,9 @@ MonoBehaviour:
   - {fileID: 7044170483320978152, guid: a4f3cf0eedfc7fe44ac3467c04164b43, type: 3}
   gamePlays: 0
   timeWait: 5
-  players: []
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
   playerPrefab: CityPlayer
 --- !u!4 &813013646
 Transform:

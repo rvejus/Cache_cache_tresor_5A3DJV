@@ -15,7 +15,8 @@ public class CityPlayer : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Initialize(Player player) {
         photonPlayer = player;
-        playerID = player.ActorNumber -1;
+        playerID = player.ActorNumber-1;
+        Debug.Log(playerID);
         GameManager.Instance.players[playerID] = this;
         isReady = false;
     }
@@ -34,7 +35,7 @@ public class CityPlayer : MonoBehaviourPunCallbacks
         Vector3 fwd = Aim.Instance.transform.TransformDirection(Vector3.forward);
         if (Physics.Raycast(transform.position, fwd, out hit, 10))
         {
-            photonView.RPC("CallShoot", RpcTarget.All);
+            photonView.RPC("CallShoot", RpcTarget.All, playerID,hit);
         }
     }
     
