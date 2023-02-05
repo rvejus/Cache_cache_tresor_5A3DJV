@@ -1,15 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.UI;
 
-public class CityPlayer : MonoBehaviour
+public class CityPlayer : MonoBehaviourPunCallbacks
 {
     public int playerID;
     public bool isReady;
+    public Player photonPlayer;
 
-    public void callShoot()
+    [PunRPC]
+    public void Initialize(Player player) {
+        photonPlayer = player;
+        playerID = player.ActorNumber -1;
+        GameManager.Instance.players[playerID] = this;
+        isReady = false;
+    }
+
+    private void Start()
     {
-        Aim.Instance.Shoot(playerID);
+        if (!photonView.IsMine) { return; }
+
+        UIControl.Instance.CurrentPlayer = this;
+    }
+
+
+    public void callAim()
+    {
+        RaycastHit hit;
+        Vector3 fwd = Aim.Instance.transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(transform.position, fwd, out hit, 10))
+        {
+            photonView.RPC("CallShoot", RpcTarget.All);
+        }
     }
     
+    [PunRPC]
+    public void CallShoot(int IDPlayer, RaycastHit hit)
+    {
+        Aim.Instance.Shoot(playerID, hit);
+    }
 }
