@@ -41,7 +41,7 @@ public class CityPlayer : MonoBehaviourPunCallbacks
     {
         RaycastHit hit;
         Vector3 fwd = viseur.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, fwd, out hit, 10))
+        if (Physics.Raycast(viseur.position, fwd, out hit, 10))
         {
             Aim.Instance.Shoot(playerID, hit);
         }
