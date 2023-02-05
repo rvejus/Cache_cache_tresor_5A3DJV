@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour
 {
+    public static Aim Instance;
+    private void Awake()
+    {
+        {
+            if (Instance == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy (gameObject);
+            }
+
+        }
+    }
     public void Shoot(int PlayerID)
     {
         RaycastHit hit;

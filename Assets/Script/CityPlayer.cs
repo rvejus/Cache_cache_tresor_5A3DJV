@@ -7,8 +7,9 @@ public class CityPlayer : MonoBehaviour
     public int playerID;
     public bool isReady;
 
-    public void callAim()
+    public void callShoot()
     {
-        
+        Aim.Instance.Shoot(playerID);
     }
+    
 }

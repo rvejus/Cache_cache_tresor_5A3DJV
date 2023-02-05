@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
     private int iter=0;
     private Vector3 chngScale = new Vector3(-0.1f, 0f, -0.1f);
     public List<CityPlayer> players = new List<CityPlayer>(2);
-  
-
+    
     private void Awake()
     {
         {
