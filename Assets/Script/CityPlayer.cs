@@ -31,17 +31,19 @@ public class CityPlayer : MonoBehaviourPunCallbacks
 
     public void callAim()
     {
-        RaycastHit hit;
-        Vector3 fwd = Aim.Instance.transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, fwd, out hit, 10))
-        {
-            photonView.RPC("CallShoot", RpcTarget.All, playerID,hit);
-        }
+        Transform viseur= Aim.Instance.transform;
+        photonView.RPC("CallShoot", RpcTarget.All, playerID,viseur);
+        
     }
     
     [PunRPC]
-    public void CallShoot(int IDPlayer, RaycastHit hit)
+    public void CallShoot(int IDPlayer, Transform viseur)
     {
-        Aim.Instance.Shoot(playerID, hit);
+        RaycastHit hit;
+        Vector3 fwd = viseur.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(transform.position, fwd, out hit, 10))
+        {
+            Aim.Instance.Shoot(playerID, hit);
+        }
     }
 }
