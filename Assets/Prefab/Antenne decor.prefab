@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3769481797119764510}
   - component: {fileID: 2511261384461220327}
   - component: {fileID: 5615444112588066320}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Antenne decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
