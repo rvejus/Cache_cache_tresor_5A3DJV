@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3769481797119764510}
   - component: {fileID: 2511261384461220327}
   - component: {fileID: 5615444112588066320}
-  - component: {fileID: 857308100724543570}
   - component: {fileID: 7479654504911130144}
   - component: {fileID: 8101677675081806130}
   m_Layer: 7
@@ -98,19 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &857308100724543570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7606139175552303575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a43841d1f898c4aa704d5f5f58f226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 0
 --- !u!82 &7479654504911130144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -127,7 +113,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
