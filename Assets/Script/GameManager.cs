@@ -125,8 +125,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                GameObject go = Instantiate(cylindersPrefab[0],playersObjects[0].transform.position, Quaternion.Euler(Vector3.zero));
-                cylinders[0] = go;
+                //GameObject go = Instantiate(cylindersPrefab[0],playersObjects[0].transform.position, Quaternion.Euler(Vector3.zero));
+                //cylinders[0] = go;
+                photonView.RPC("spawnCylinder", RpcTarget.All, 0);
             }
         }
         if (playersObjects[1] != null)
@@ -137,11 +138,21 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                GameObject go = Instantiate(cylindersPrefab[1],playersObjects[1].transform.position, Quaternion.Euler(Vector3.zero));
-                cylinders[1] = go;
+                //GameObject go = Instantiate(cylindersPrefab[1],playersObjects[1].transform.position, Quaternion.Euler(Vector3.zero));
+                //cylinders[1] = go;
+                photonView.RPC("spawnCylinder", RpcTarget.All, 1);
             }
         }
     }
+
+    [PunRPC]
+    public void spawnCylinder(int index)
+    {
+        GameObject go = PhotonNetwork.Instantiate(cylindersPrefab[index].name, playersObjects[index].transform.position,
+            Quaternion.Euler(Vector3.zero));
+        cylinders[index] = go;
+    }
+    
     
     [PunRPC]
     void ImInGame(){
