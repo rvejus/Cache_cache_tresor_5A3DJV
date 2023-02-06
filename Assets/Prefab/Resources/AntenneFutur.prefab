@@ -52,6 +52,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4365563689908219249, guid: eeade5eac92f39e439a9bf65b8f4007c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365563689908219249, guid: eeade5eac92f39e439a9bf65b8f4007c, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}

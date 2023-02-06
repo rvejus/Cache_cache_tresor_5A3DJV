@@ -40,6 +40,7 @@ public class Factory : MonoBehaviourPunCallbacks
         GameObject go = PhotonNetwork.Instantiate(Objects[index].name, pos + offset, Quaternion.Euler(rot));
         go.AddComponent<Treasure>();
         go.GetComponent<Treasure>().playerID = playerID;
+        go.GetComponent<AudioSource>().Play();
         if (GameManager.Instance.playersObjects[playerID] == null)
         {
             GameManager.Instance.playersObjects[playerID] = go;
