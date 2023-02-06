@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1352365126}
   mHiddenRoot: {fileID: 0}
-  mTargetName: City_Card
+  mTargetName: viforia_drone
   mDatasetName: Vuforia/Cache_cache_tresor_cards.xml
   mCastedBehaviour: {fileID: 1352365126}
   mMeshFilter: {fileID: 0}
@@ -1914,13 +1914,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: City_Card
+  mTrackableName: viforia_drone
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/Cache_cache_tresor_cards.xml
-  mAspectRatio: 1.6333328
+  mAspectRatio: 1.725146
   mImageTargetType: 0
-  mWidth: 0.7
-  mHeight: 1.143333
+  mWidth: 0.76
+  mHeight: 1.311111
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
