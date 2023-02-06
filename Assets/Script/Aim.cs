@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.Rendering;
 
-public class Aim : MonoBehaviour
+public class Aim : MonoBehaviourPunCallbacks
 {
     public static Aim Instance;
     private void Awake()
@@ -30,18 +33,22 @@ public class Aim : MonoBehaviour
             if (!GameManager.Instance.gamePlays)
             {
                 Decor dec = gohit.GetComponent<Decor>();
-                GameObject go = Factory.Instance.factoryGO(hit.point, dec.rot, dec.offset, PlayerID, dec.index);
-                go.transform.parent = gohit.transform;
-                if (GameManager.Instance.playersObjects[PlayerID] == null)
-                {
-                    GameManager.Instance.playersObjects[PlayerID] = go;
-                }
-                else
-                {
-                    //GameObject goToDestroy = GameManager.Instance.playersObjects[PlayerID];
-                    Destroy(GameManager.Instance.playersObjects[PlayerID]);
-                    GameManager.Instance.playersObjects[PlayerID] = go;
-                }
+                Transform t = hit.transform;
+                Vector3 pos = t.position;
+                Quaternion rot = t.rotation;
+                Vector3 offset = dec.offset;
+                double tx = pos.x;
+                double ty = pos.y;
+                double tz = pos.z;
+                double rx = rot.x;
+                double ry = rot.y;
+                double rz = rot.z;
+                double ox = offset.x;
+                double oy = offset.y;
+                double oz = offset.z;
+                Factory.Instance.factoryGO(tx,ty,tz,rx,ry,rz,ox,oy,oz,PlayerID,dec.index);
+                //Factory.Instance.factoryGO(hit.point, dec.rot, dec.offset, PlayerID, dec.index);
+                
             }
         }
         else if (gohit.layer == 7)

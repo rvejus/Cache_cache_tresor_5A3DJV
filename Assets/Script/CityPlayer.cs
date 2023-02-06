@@ -35,22 +35,22 @@ public class CityPlayer : MonoBehaviourPunCallbacks
         Vector3 pos = viseur.position;
         Quaternion rot = viseur.rotation;
         Vector3 fwd = viseur.TransformDirection(Vector3.forward);
-        float fx = fwd.x;
-        float fy = fwd.y;
-        float fz = fwd.z;
-        float tx = pos.x;
-        float ty = pos.y;
-        float tz = pos.z;
+        double fx = fwd.x;
+        double fy = fwd.y;
+        double fz = fwd.z;
+        double tx = pos.x;
+        double ty = pos.y;
+        double tz = pos.z;
         photonView.RPC("CallShoot", RpcTarget.All, playerID,fx,fy,fz,tx,ty,tz);
         
     }
     
     [PunRPC]
-    public void CallShoot(int IDPlayer, float fx, float fy, float fz, float tx, float ty, float tz)
+    public void CallShoot(int IDPlayer, double fx, double fy, double fz, double tx, double ty, double tz)
     {
-        Vector3 pos = new Vector3(tx, ty, tz);
+        Vector3 pos = new Vector3((float)tx, (float)ty, (float)tz);
         RaycastHit hit;
-        Vector3 fwd = new Vector3(fx, fy, fz);
+        Vector3 fwd = new Vector3((float)fx, (float)fy, (float)fz);
         if (Physics.Raycast(pos, fwd, out hit, 10))
         {
             Aim.Instance.Shoot(playerID, hit);
