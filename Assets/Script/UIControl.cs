@@ -19,6 +19,8 @@ public class UIControl : MonoBehaviour {
     private void Update()
     {
         if (!PhotonNetwork.IsMasterClient) _debugTimerBtn.gameObject.SetActive(false);
+        if (GameManager.Instance.playersObjects[CurrentPlayer.playerID] == null) _validateBtn.interactable = false;
+        else _validateBtn.interactable = true;
     }
    
     public void OnAimButtonPressed() {
@@ -29,7 +31,7 @@ public class UIControl : MonoBehaviour {
     public void OnValidateButtonPressed()
     {
         if (CurrentPlayer == null) { return; }
-        
+        CurrentPlayer.photonView.RPC("SetReady",RpcTarget.All);
         
     }
 }

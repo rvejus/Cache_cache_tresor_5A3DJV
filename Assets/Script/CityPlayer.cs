@@ -56,4 +56,10 @@ public class CityPlayer : MonoBehaviourPunCallbacks
             Aim.Instance.Shoot(playerID, hit);
         }
     }
+
+    [PunRPC]
+    public void SetReady()
+    {
+        isReady = true;
+    }
 }

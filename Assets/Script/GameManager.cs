@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -43,16 +44,42 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void Update()
+    {
+        int validated = 0;
+        foreach (var player in players)
+        {
+            if (player.isReady) validated++;
+        }
+
+        if (validated == players.Length && gamePlays==false)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("StartGame", RpcTarget.All);
+            }
+            
+        }
+        
+    }
+
     public void winner(int playerID)
     {
         Debug.Log("player "+playerID+" is the winner !");
     }
 
+    
     public void timerBegin()
     {
         photonView.RPC("rpctimerBegin", RpcTarget.All);
     }
 
+    [PunRPC]
+    public void StartGame()
+    {
+        gamePlays = true;
+    }
+    
     [PunRPC]
     public void rpctimerBegin()
     {
