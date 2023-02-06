@@ -921,6 +921,7 @@ MonoBehaviour:
   - {fileID: 1467669123047145738, guid: 36db342bb41c7db42a908461eb4e1221, type: 3}
   - {fileID: 783769522415134771, guid: 74dbfa58e2192144fb557ee0c4507b58, type: 3}
   - {fileID: 5574895148267653587, guid: ab0d443468b54d544ad3ee699aea9d7b, type: 3}
+  photonPlayer: {fileID: 0}
 --- !u!114 &813013645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3128,6 +3129,10 @@ PrefabInstance:
     - target: {fileID: 2627634313354861035, guid: 41c5f80b647ac5043803b14a69ae46bb, type: 3}
       propertyPath: m_Name
       value: AR Session Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627634313454993542, guid: 41c5f80b647ac5043803b14a69ae46bb, type: 3}
+      propertyPath: mWorldCenterMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c5f80b647ac5043803b14a69ae46bb, type: 3}
