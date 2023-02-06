@@ -34,18 +34,18 @@ public class Aim : MonoBehaviourPunCallbacks
             {
                 Decor dec = gohit.GetComponent<Decor>();
                 Transform t = hit.transform;
-                Vector3 pos = t.position;
-                Quaternion rot = t.rotation;
+                Vector3 pts = hit.point;
+                Vector3 rot = dec.rot;
                 Vector3 offset = dec.offset;
-                double tx = pos.x;
-                double ty = pos.y;
-                double tz = pos.z;
-                double rx = rot.x;
-                double ry = rot.y;
-                double rz = rot.z;
-                double ox = offset.x;
-                double oy = offset.y;
-                double oz = offset.z;
+                float tx = pts.x;
+                float ty = pts.y;
+                float tz = pts.z;
+                float rx = rot.x;
+                float ry = rot.y;
+                float rz = rot.z;
+                float ox = offset.x;
+                float oy = offset.y;
+                float oz = offset.z;
                 Factory.Instance.factoryGO(tx,ty,tz,rx,ry,rz,ox,oy,oz,PlayerID,dec.index);
                 //Factory.Instance.factoryGO(hit.point, dec.rot, dec.offset, PlayerID, dec.index);
                 
