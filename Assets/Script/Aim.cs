@@ -53,7 +53,7 @@ public class Aim : MonoBehaviourPunCallbacks
         }
         else if (gohit.layer == 7)
         {
-            if (GameManager.Instance.gamePlays && gohit.gameObject != GameManager.Instance.playersObjects[PlayerID])
+            if (GameManager.Instance.gamePlays && !gohit.gameObject.GetPhotonView().IsMine)
             {
                 GameManager.Instance.winner(PlayerID);
             }

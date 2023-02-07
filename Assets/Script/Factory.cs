@@ -52,6 +52,5 @@ public class Factory : MonoBehaviourPunCallbacks
     public void factoryGOpun(float tx, float ty, float tz, float rx, float ry, float rz, float ox, float oy, float oz, int playerID, int index)
     {
         
-        
     }
 }

@@ -151,9 +151,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void spawnCylinder(int index)
     {
-        GameObject go = PhotonNetwork.Instantiate(cylindersPrefab[index].name, playersObjects[index].transform.position,
-            Quaternion.Euler(Vector3.zero));
-        cylinders[index] = go;
+        if (playersObjects[index]!=null)
+        {
+            GameObject go = PhotonNetwork.Instantiate(cylindersPrefab[index].name, playersObjects[index].transform.position,
+                Quaternion.Euler(Vector3.zero));
+            cylinders[index] = go;
+        }
     }
     
     
