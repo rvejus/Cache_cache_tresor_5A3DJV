@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (GameEND)
         {
-            PhotonNetwork.LoadLevel("Win");
+            PhotonNetwork.LoadLevel("WinScene");
         }
         
         int validated = 0;
