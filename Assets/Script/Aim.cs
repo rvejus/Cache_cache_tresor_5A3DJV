@@ -53,7 +53,7 @@ public class Aim : MonoBehaviourPunCallbacks
         }
         else if (gohit.layer == 7)
         {
-            if (GameManager.Instance.gamePlays && gohit.GetComponent<Treasure>().playerID != PlayerID)
+            if (GameManager.Instance.gamePlays && gohit.gameObject != GameManager.Instance.playersObjects[PlayerID])
             {
                 GameManager.Instance.winner(PlayerID);
             }
