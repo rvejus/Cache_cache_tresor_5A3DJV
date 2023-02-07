@@ -6,11 +6,10 @@ using TMPro;
 
 public class winSceneScript : MonoBehaviour
 {
-    private int winner;
     [SerializeField] private TMP_Text winTxt;
     private void Start()
     {
-        winner = GameManager.Instance.theWinner;
-        winTxt.SetText("Player "+winner+" is the winner ! Congratulation !");
+        int winner = GameManager.Instance.theWinner;
+        winTxt.SetText("Player "+winner+" is the winner, Congratulation !");
     }
 }
