@@ -13,7 +13,7 @@ public class winNetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        Destroy(GameObject.Find("Manager"));
+        Destroy(GameObject.Find("Managers"));
         SceneManager.LoadScene(0);
     }
 }
