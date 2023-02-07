@@ -10,6 +10,6 @@ public class winSceneScript : MonoBehaviour
     private void Start()
     {
         int winner = GameManager.Instance.theWinner;
-        winTxt.SetText("Player "+winner+" is the winner, Congratulation !");
+        winTxt.SetText("Player "+(winner+1)+" is the winner, Congratulation !");
     }
 }
