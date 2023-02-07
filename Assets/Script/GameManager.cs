@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 photonView.RPC("StartGame", RpcTarget.All);
+                timerBegin();
             }
             
         }
