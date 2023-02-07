@@ -28,16 +28,6 @@ public class Factory : MonoBehaviourPunCallbacks
 
     public void factoryGO(float tx, float ty, float tz, float rx, float ry, float rz, float ox, float oy, float oz, int playerID, int index)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            photonView.RPC("factoryGOpun", RpcTarget.All, tx,ty,tz,rx,ry,rz,ox,oy,oz,playerID,index);
-        }
-        
-    }
-
-    [PunRPC]
-    public void factoryGOpun(float tx, float ty, float tz, float rx, float ry, float rz, float ox, float oy, float oz, int playerID, int index)
-    {
         Vector3 pos = new Vector3(tx, ty, tz);
         Vector3 rot = new Vector3(rx, ry,rz);
         Vector3 offset = new Vector3(ox, oy,oz);
@@ -55,6 +45,13 @@ public class Factory : MonoBehaviourPunCallbacks
             PhotonNetwork.Destroy(GameManager.Instance.playersObjects[playerID]);
             GameManager.Instance.playersObjects[playerID] = go;
         }
+        
+    }
+
+    [PunRPC]
+    public void factoryGOpun(float tx, float ty, float tz, float rx, float ry, float rz, float ox, float oy, float oz, int playerID, int index)
+    {
+        
         
     }
 }
