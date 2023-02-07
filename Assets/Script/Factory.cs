@@ -28,7 +28,11 @@ public class Factory : MonoBehaviourPunCallbacks
 
     public void factoryGO(float tx, float ty, float tz, float rx, float ry, float rz, float ox, float oy, float oz, int playerID, int index)
     {
-        photonView.RPC("factoryGOpun", RpcTarget.All, tx,ty,tz,rx,ry,rz,ox,oy,oz,playerID,index);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("factoryGOpun", RpcTarget.All, tx,ty,tz,rx,ry,rz,ox,oy,oz,playerID,index);
+        }
+        
     }
 
     [PunRPC]
