@@ -48,13 +48,17 @@ public class CityPlayer : MonoBehaviourPunCallbacks
     [PunRPC]
     public void CallShoot(int IDPlayer, double fx, double fy, double fz, double tx, double ty, double tz)
     {
-        Vector3 pos = new Vector3((float)tx, (float)ty, (float)tz);
-        RaycastHit hit;
-        Vector3 fwd = new Vector3((float)fx, (float)fy, (float)fz);
-        if (Physics.Raycast(pos, fwd, out hit, 10))
+        if (photonView.IsMine)
         {
-            Aim.Instance.Shoot(playerID, hit);
+            Vector3 pos = new Vector3((float)tx, (float)ty, (float)tz);
+            RaycastHit hit;
+            Vector3 fwd = new Vector3((float)fx, (float)fy, (float)fz);
+            if (Physics.Raycast(pos, fwd, out hit, 10))
+            {
+                Aim.Instance.Shoot(playerID, hit);
+            }
         }
+        
     }
 
     [PunRPC]
