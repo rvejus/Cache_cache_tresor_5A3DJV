@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void winner(int playerID)
     {
         Debug.Log("player "+playerID+" is the winner !");
+        theWinner = playerID;
     }
 
     
