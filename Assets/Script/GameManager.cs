@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private Vector3 chngScale = new Vector3(-0.1f, 0f, -0.1f);
     public CityPlayer[] players;
     public string playerPrefab;
+    public int theWinner;
     
     private void Start(){
         
