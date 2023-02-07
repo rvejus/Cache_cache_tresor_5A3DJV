@@ -55,7 +55,7 @@ public class Aim : MonoBehaviourPunCallbacks
         {
             if (GameManager.Instance.gamePlays && !gohit.gameObject.GetPhotonView().IsMine)
             {
-                GameManager.Instance.winner(PlayerID);
+                GameManager.Instance.photonView.RPC("setWinner", RpcTarget.AllBuffered, PlayerID);
             }
         }
     }

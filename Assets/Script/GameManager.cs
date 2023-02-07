@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public CityPlayer[] players;
     public string playerPrefab;
     public int theWinner;
+    public bool GameEND = false;
     
     private void Start(){
         
@@ -47,6 +48,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
+        if (GameEND)
+        {
+            PhotonNetwork.LoadLevel("WinScene");
+        }
+        
         int validated = 0;
         foreach (var player in players)
         {
@@ -63,12 +69,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             
         }
         
+        
     }
 
     public void winner(int playerID)
     {
         Debug.Log("player "+playerID+" is the winner !");
         theWinner = playerID;
+        GameEND = true;
     }
 
     
@@ -167,6 +175,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(playersInGame == PhotonNetwork.PlayerList.Length){
             SpawnPlayer();
         }
+    }
+
+    [PunRPC]
+    void setWinner(int winID)
+    {
+        Debug.Log("player "+winID+" is the winner !");
+        theWinner = winID;
+        GameEND = true;
     }
     
     void SpawnPlayer(){
