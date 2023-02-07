@@ -48,11 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (GameEND)
-        {
-            PhotonNetwork.LoadLevel("WinScene");
-        }
-        
+
         int validated = 0;
         foreach (var player in players)
         {
@@ -183,6 +179,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("player "+winID+" is the winner !");
         theWinner = winID;
         GameEND = true;
+        PhotonNetwork.LoadLevel("WinScene");
     }
     
     void SpawnPlayer(){
